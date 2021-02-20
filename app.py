@@ -55,7 +55,7 @@ def on_message(client, userdata, message):
 
     msgout = "{"
     for i in range(len(thresholds)):
-        msgout += "Threshold" + i + ":" + str(thresholds[i]) + ","
+        msgout += "Threshold" + str(i) + ":" + str(thresholds[i]) + ","
     msgout = msgout[:-1] + "}"
 
     client.publish("thresholds", msgout)
