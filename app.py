@@ -22,7 +22,6 @@ def hello_world():
 def set_threshold():
     id = request.form['id']
     val = request.form['val']
-    print("in here")
     global thresholds
     try:
         thresholds[int(id)] = int(val)
@@ -53,6 +52,14 @@ def on_message(client, userdata, message):
 
     print("ok")
     set_last_message(data['payload'])
+
+    msgout = "{"
+    for i in range(len(thresholds)):
+        msgout += "Threshold" + i + ":" + str(thresholds[i]) + ","
+    msgout = msgout[:-1] + "}"
+
+    client.publish("thresholds", msgout)
+    print("send " + msgout)
 
 if __name__ == '__main__':
     client = mqtt.Client()
