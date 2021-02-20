@@ -5,12 +5,12 @@
   </head>
   <body>
     <p>Last Message: {{ msg }}</p>
-    <p>Sensor 0: {{ sensors[0] }}</p>
-    <p>Sensor 1: {{ sensors[1] }}</p>
-    <p>Sensor 2: {{ sensors[2] }}</p>
-    <p>Threhold 0: {{ thresholds[0] }}</p>
-    <p>Threhold 1: {{ thresholds[1] }}</p>
-    <p>Threhold 2: {{ thresholds[2] }}</p>
+    <p>Sensor 0: {{ sensors[0] }}%</p>
+    <p>Sensor 1: {{ sensors[1] }}%</p>
+    <p>Sensor 2: {{ sensors[2] }}%</p>
+    <p>Threhold 0: {{ thresholds[0] }}%</p>
+    <p>Threhold 1: {{ thresholds[1] }}%</p>
+    <p>Threhold 2: {{ thresholds[2] }}%</p>
     <p>Update Threshold</p>
     <form action="{{ url_for('set_threshold') }}" method="post">
       <input type="int" name="id">

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import paho.mqtt.client as mqtt
+import json
 from setup import *
 
 app = Flask(__name__)
@@ -39,8 +40,18 @@ def on_message(client, userdata, message):
         topic=message.topic,
         payload=message.payload.decode()
     )
+
     print("got message reading", data['topic'])
     print("content:", data['payload'])
+    print("parsing msg...")
+    msg_dict = json.loads(data["payload"])
+
+    i = 0
+    for key in msg_dict.keys():
+        sensors[i] = int(msg_dict[key])
+        i += 1
+
+    print("ok")
     set_last_message(data['payload'])
 
 if __name__ == '__main__':
