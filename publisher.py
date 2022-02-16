@@ -10,6 +10,7 @@ BROKER_ADDRESS = get_broker_addr()
 
 client = mqtt.Client()
 client.connect(BROKER_ADDRESS,1883,60)
+i = 0
 
 def on_message(client, userdata, msg):
     print("got message")
@@ -23,4 +24,5 @@ client.subscribe("thresholds")
 while True:
     time.sleep(5)
     print("sending message")
-    client.publish("readings", '{"Sensor0":89.69,"Sensor1":22,"Sensor2":11.1}')
+    client.publish("readings", "Hello world!" + str(i));
+    i += 1
